@@ -45,19 +45,21 @@ class _MapsPage extends State<MobileMapsPage>
       _markers.clear();
       cases.forEach((element) {
         element.cases.forEach((element) {
-          final totalCount = element.totalCount;
-          final title = '${element.state} ${element.country}';
-          final marker = Marker(
-            markerId: MarkerId(title),
-            position: LatLng(element.latitude, element.longitude),
-            infoWindow: InfoWindow(
-              title:
-                  "${element.state != null ? element.state : 'N/A'}-${element.country}",
-              snippet:
-                  "C: ${totalCount.confirmedText} D: ${totalCount.deathsText} R: ${totalCount.recoveredText}",
-            ),
-          );
-          _markers[title] = marker;
+          if (element.latitude != null && element.longitude != null) {
+            final totalCount = element.totalCount;
+            final title = '${element.state} ${element.country}';
+            final marker = Marker(
+              markerId: MarkerId(title),
+              position: LatLng(element.latitude, element.longitude),
+              infoWindow: InfoWindow(
+                title:
+                    "${element.state != null ? element.state : 'N/A'}-${element.country}",
+                snippet:
+                    "C: ${totalCount.confirmedText} D: ${totalCount.deathsText} R: ${totalCount.recoveredText}",
+              ),
+            );
+            _markers[title] = marker;
+          }
         });
       });
     });

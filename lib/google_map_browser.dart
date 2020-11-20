@@ -65,7 +65,7 @@ class _MapsPage extends State<BrowserMapsPage>
             ui.platformViewRegistry.registerViewFactory(htmlId, (int viewId) {
               final mapOptions = googleWebMap.MapOptions()
                 ..zoom = 5
-                ..center = googleWebMap.LatLng(30.5833, 114.26667);
+//                ..center = googleWebMap.LatLng(30.5833, 114.26667);
 
               final elem = DivElement()
                 ..id = htmlId
